@@ -1,15 +1,22 @@
 import 'dart:io';
 
-class DistroService {
-  static Future<Distro> getDistro() async {
+import 'package:flutter/cupertino.dart';
+
+class DistroService extends ChangeNotifier {
+  Distro distro = Distro.unknown;
+
+  DistroService() {
+    setDistro();
+  }
+
+  Future setDistro() async {
     var key = DistroService.releaseFileToDistro.keys.firstWhere((element) {
       File file = File("/etc/" + element);
       return file.existsSync();
     }, orElse: () => "unknown");
 
-    var distro = DistroService.releaseFileToDistro[key] ?? Distro.unknown;
-
-    return distro;
+    distro = DistroService.releaseFileToDistro[key] ?? Distro.unknown;
+    notifyListeners();
   }
 
   static const Map<String, Distro> releaseFileToDistro = {
@@ -17,7 +24,7 @@ class DistroService {
     "unknown": Distro.unknown,
   };
 
-  static String getLogoForDistro(Distro distro) {
+  String getLogo() {
     switch (distro) {
       case Distro.arch:
         return "logos/arch.svg";

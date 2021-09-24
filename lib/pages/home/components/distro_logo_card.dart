@@ -1,5 +1,6 @@
-import 'package:fletch/services/distro_service.dart';
+import 'package:fletch/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DistroLogoCard extends StatefulWidget {
@@ -10,12 +11,9 @@ class DistroLogoCard extends StatefulWidget {
 }
 
 class _DistroLogoCardState extends State<DistroLogoCard> {
-  Future? getDistro;
-
   @override
   void initState() {
     super.initState();
-    getDistro = DistroService.getDistro();
   }
 
   @override
@@ -26,14 +24,10 @@ class _DistroLogoCardState extends State<DistroLogoCard> {
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: FutureBuilder(
-            future: getDistro,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return SvgPicture.asset(
-                    DistroService.getLogoForDistro(snapshot.data));
-              }
-              return const SizedBox.shrink();
+          child: Consumer(
+            builder: (context, watch, child) {
+              var distroService = watch(distroProvider);
+              return SvgPicture.asset(distroService.getLogo());
             },
           ),
         ),
