@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(height: 12),
         SizedBox(
           height: 300,
           child: Row(
@@ -22,6 +23,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 12),
       ],
     );
   }
