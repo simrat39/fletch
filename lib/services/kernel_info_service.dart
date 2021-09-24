@@ -1,10 +1,17 @@
 import 'dart:io';
 
 class KernelInfoService {
+  // The kernel name does not usually change while the system is running so
+  // save it in here
+  static String? kernelName;
+
   static Future<String> getKernelName() async {
-    File file = File("/proc/version");
-    var raw = await file.readAsString();
-    return KernelInfoService.parseKernelInfo(raw);
+    if (KernelInfoService.kernelName == null) {
+      File file = File("/proc/version");
+      var raw = await file.readAsString();
+      KernelInfoService.kernelName = KernelInfoService.parseKernelInfo(raw);
+    }
+    return KernelInfoService.kernelName!;
   }
 
   static String parseKernelInfo(String data) {

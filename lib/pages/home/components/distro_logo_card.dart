@@ -22,7 +22,7 @@ class _DistroLogoCardState extends State<DistroLogoCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
-      height: 300,
+      height: double.infinity,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(24.0),

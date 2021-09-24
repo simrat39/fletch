@@ -9,11 +9,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Row(
-          children: const [
-            DistroLogoCard(),
-            InfoCard(),
-          ],
+        SizedBox(
+          height: 300,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              DistroLogoCard(),
+              Expanded(
+                child: InfoCard(),
+              ),
+            ],
+          ),
         ),
       ],
     );
