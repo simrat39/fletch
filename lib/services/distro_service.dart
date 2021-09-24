@@ -32,6 +32,15 @@ class DistroService extends ChangeNotifier {
         return "logos/pengu.svg";
     }
   }
+
+  String getName() {
+    switch (distro) {
+      case Distro.arch:
+        return "Arch Linux";
+      case Distro.unknown:
+        return "Linux";
+    }
+  }
 }
 
 enum Distro { arch, unknown }
