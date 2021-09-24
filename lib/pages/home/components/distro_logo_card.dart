@@ -24,15 +24,18 @@ class _DistroLogoCardState extends State<DistroLogoCard> {
       width: 300,
       height: 300,
       child: Card(
-        child: FutureBuilder(
-          future: getDistro,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Waiting...");
-            }
-            return SvgPicture.asset(
-                DistroService.getLogoForDistro(snapshot.data));
-          },
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: FutureBuilder(
+            future: getDistro,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return SvgPicture.asset(
+                    DistroService.getLogoForDistro(snapshot.data));
+              }
+              return const SizedBox.shrink();
+            },
+          ),
         ),
       ),
     );
