@@ -1,3 +1,4 @@
+import 'package:fletch/pages/home/components/default_shell.dart';
 import 'package:fletch/pages/home/components/kernel_name.dart';
 import 'package:fletch/pages/home/components/uptime.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class InfoCard extends StatelessWidget {
             Divider(),
             Expanded(child: Uptime()),
             Divider(),
-            Expanded(child: Text("b")),
+            Expanded(child: DefaultShell()),
             Divider(),
             Expanded(child: Text("b")),
             Divider(),
