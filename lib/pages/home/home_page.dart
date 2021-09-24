@@ -1,4 +1,5 @@
 import 'package:fletch/pages/home/components/distro_logo_card.dart';
+import 'package:fletch/pages/home/components/info_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,8 +8,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
-        DistroLogoCard(),
+      children: [
+        Row(
+          children: const [
+            DistroLogoCard(),
+            InfoCard(),
+          ],
+        ),
       ],
     );
   }

@@ -20,16 +20,20 @@ class _DistroLogoCardState extends State<DistroLogoCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: FutureBuilder(
-        future: getDistro,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Waiting...");
-          }
-          return SvgPicture.asset(
-              DistroService.getLogoForDistro(snapshot.data));
-        },
+    return SizedBox(
+      width: 300,
+      height: 300,
+      child: Card(
+        child: FutureBuilder(
+          future: getDistro,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Text("Waiting...");
+            }
+            return SvgPicture.asset(
+                DistroService.getLogoForDistro(snapshot.data));
+          },
+        ),
       ),
     );
   }

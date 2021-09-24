@@ -1,4 +1,5 @@
 import 'package:fletch/pages/home/home_page.dart';
+import 'package:fletch/pages/layout.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const Scaffold(
-        body: HomePage(),
+        body: RootLayout(
+          child: HomePage(),
+        ),
       ),
     );
   }
