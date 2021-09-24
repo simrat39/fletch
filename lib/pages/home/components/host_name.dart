@@ -9,7 +9,6 @@ class HostName extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     var infoService = watch(userInfoProvider);
-    print(infoService.getFormattedName());
     return Row(
       children: [
         Text(
