@@ -1,4 +1,5 @@
 import 'package:fletch/pages/home/components/kernel_name.dart';
+import 'package:fletch/pages/home/components/uptime.dart';
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
@@ -13,7 +14,7 @@ class InfoCard extends StatelessWidget {
           children: const [
             Expanded(child: KernelName()),
             Divider(),
-            Expanded(child: Text("b")),
+            Expanded(child: Uptime()),
             Divider(),
             Expanded(child: Text("b")),
             Divider(),
