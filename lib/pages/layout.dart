@@ -12,7 +12,7 @@ class RootLayout extends StatelessWidget {
         if (constraints.maxWidth >= 1000) {
           return Container(
             padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.2,
+              horizontal: MediaQuery.of(context).size.width * 0.1,
             ),
             child: child,
           );
